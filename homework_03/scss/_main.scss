@@ -1,1 +1,103 @@
+@mixin cont{
+  color:$hncolor;
+}
+@mixin img($borderImg,$paddingImg){
+  padding: $paddingImg ;
+  border: $borderImg solid $hncolor;
 
+}
+body{
+  background-color: $BackgroundColor;
+  color: $Fontcolor;
+  font-size: $fontsize;
+}
+#content{
+  padding: $padding ;
+  max-width: $widthContent;
+  background-color:$BackgroundContent ;
+  margin: $center;
+}
+ h1{
+  text-align: center;
+  @include cont ;
+}
+  h2{
+  @include cont;
+}
+img{
+  &.img-left{
+    float: left;
+    margin: $marginLeft;
+    @include img($borderImg,$paddingImg);
+  }
+  &.img-right{
+    float: right;
+    margin: $marginRight;
+    @include img($borderImg,$paddingImg);
+  }
+}
+.brief {
+  background-color: $briefColor;
+  margin: $marginBrief;
+  width: $widthBrief;
+  float: $left;
+  padding: $BriefPadding;
+  box-sizing: border-box;
+  color: $FontBriefColor;
+}
+a{
+  color: $linkColor;
+}
+table{
+  margin: $marginTable;
+  border-collapse: collapse;
+  background-color: $backgroundTable;
+}
+caption{
+  text-align: right;
+}
+th{
+  text-align: left;
+  text-transform: uppercase;
+  background-color: $backgroundTh;
+  padding:10px 20px;
+  border-right: 2px solid #fff;
+}
+td{
+  padding: 10px 10px;
+  border-bottom: $bordertable;
+  }
+//form
+
+.UserName,.UserLastName{
+  display: inline-block;
+}
+.UserName{
+  padding: 0 5px 0 0;
+  width: 49%;
+}
+.UserLastName{
+  width: 50%;
+}
+input {
+  width: 100%;
+  margin: 9px 0 14px 0;
+}
+textarea {
+  width: 100%;
+}
+p{
+  .UserData &{
+  color: $FormColor ;
+  text-transform: uppercase;
+}
+}
+input[type="submit"]{
+  border: $subborder;
+  background-color: $BackgroundContent;
+  font-size: 20px;
+  color: $linkColor;
+  width: 240px;
+  margin: 20px 0;
+  padding: 10px 60px;
+}
