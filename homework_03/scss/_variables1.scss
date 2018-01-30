@@ -10,6 +10,7 @@ $fontsize: 16px;
 $padding: 20px;
 $widthContent: 960px;
 $center: 0 auto;
+$TextTransform: none;
 //img
 $paddingImg: 2px;
 $borderImg: 2px;
@@ -22,13 +23,13 @@ $widthBrief: 425px;
 $BriefPadding: 20px;
 $FontBriefColor: $Fontcolor;
 $left: left;
-
+//link
 $linkColor: #3d70a1;
 //table
 $backgroundTh: #e0e0e0;
 $bordertable: 1px solid $backgroundTh;
 $marginTable: 0 60px 60px 0;
 $backgroundTable: #fff;
-//form
 
+//submit
 $subborder: 1px solid $linkColor;

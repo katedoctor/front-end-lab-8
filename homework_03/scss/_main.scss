@@ -19,6 +19,7 @@ body{
 }
  h1{
   text-align: center;
+  text-transform: $TextTransform;
   @include cont ;
 }
   h2{
@@ -55,6 +56,7 @@ table{
 }
 caption{
   text-align: right;
+  color: #000;
 }
 th{
   text-align: left;
@@ -62,6 +64,11 @@ th{
   background-color: $backgroundTh;
   padding:10px 20px;
   border-right: 2px solid #fff;
+  color:#000;
+}
+th:nth-child(3){
+   border-right-color: $backgroundTh;
+
 }
 td{
   padding: 10px 10px;
