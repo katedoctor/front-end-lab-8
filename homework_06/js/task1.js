@@ -1,4 +1,4 @@
-window.onload = function(){
+window.onload = function() {
 
   var a = prompt("Enter value of first side..");
   var b = prompt("Enter value of second side..");
@@ -19,26 +19,22 @@ window.onload = function(){
 
 
 
-      if ( side1 == z || side2 == y || side3 == x) {
-        type = "right triangle ";  }
-        else if (numA == numB && numB == numC && numA == numC){
-        type = "equilateral";
-      } else if(numA == numB && numA!=numC || numA == numC && numA!=numB || numB == numC && numB!=numA){
-        type = "isosceles";
-      } else  if( numA!=numB!=numC) {
-        type = "scalene";
-      }
-
-
-
+    if ( side1 === z || side2 === y || side3 === x) {
+      type = "right triangle "; 
+    } else if (numA == numB && numB == numC && numA == numC) {
+      type = "equilateral";
+    } else if(numA == numB && numA != numC || numA == numC && numA != numB || numB == numC && numB != numA) {
+      type = "isosceles";
+    } else if( numA!=numB!=numC) {
+      type = "scalene";
+    }
 
   function checkNumber() {
-      if (a > 0  &&  b > 0 &&  c > 0 && square!=0){
-        console.log("For data " + a +"," + b + "," + c + ":" + "Type of triangle is " + type +  " triangle and square is " +   parseFloat(square.toFixed(2)));
+      if (a > 0 && b > 0 && c > 0 && square!= 0) {
+        console.log("For data " + a +"," + b + "," + c + ":" + "Type of triangle is " + type + " triangle and square is " + parseFloat(square.toFixed(2)));
       } else {
         console.log("Incorrect data");
       }
-
   }
   checkNumber();
 }
