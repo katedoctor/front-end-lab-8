@@ -1,6 +1,6 @@
 window.onload = function (){
   var a = prompt("Enter the amount of Euro..");
-  var b = prompt(" Enter the amount of USD..")
+  var b = prompt(" Enter the amount of USD..");
   var euro = 33.2324;
   var dollar = 27.1240;
   var EuroToUSD = euro/dollar;
@@ -15,4 +15,4 @@ window.onload = function (){
   } else {
     console.log( "Incorrect data");
   }
-}
+};
