@@ -1,8 +1,9 @@
 let play = confirm(`Do you want to play a game?`);
-let maxPrize = 10;
-let prize = 10;
-let totalPrize = 0;
 let random = 6;
+let prize = 10;
+let maxPrize = 10;
+let totalPrize = 0;
+
 
 if (play) {
   let luckyNum =  Math.floor(Math.random() * random);
