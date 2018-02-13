@@ -9,7 +9,7 @@ if (play) {
   let luckyNum =  Math.floor(Math.random() * random);
   for (let i = 0; i < 3; i++) {
     let userNum = Number(prompt(
-      `Enter a number from 0 to ${random}\n` + `Attempts left: ${3 - i}\n` + `Total prize: ${totalPrize}$\n` + `Possible prize on current attempt: ${prize}$`
+      `Enter a number from 0 to ${random - 1}\n` + `Attempts left: ${3 - i}\n` + `Total prize: ${totalPrize}$\n` + `Possible prize on current attempt: ${prize}$`
     ));
     if (userNum === luckyNum) {
       totalPrize += prize;
