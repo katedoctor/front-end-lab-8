@@ -1,0 +1,1 @@
+let getMin = (...arr) => Math.min(...arr)
