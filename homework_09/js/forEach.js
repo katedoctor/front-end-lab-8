@@ -3,6 +3,3 @@ function forEach (arr, fn){
     fn(arr[i],i,arr);
   }
 }
-// forEach([3, 5, 2], function (el) {
-//   console.log(el);
-// })
