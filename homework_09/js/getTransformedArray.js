@@ -1,7 +1,8 @@
-let increment = (num)=>++num;
-let getTransformedArray = (arr,fn)=>{
-  arr.forEach(function(n,i){
-    arr[i]=increment(n);
+let getTransformedArray = (arr, fn) => {
+  forEach(arr, function(n,i){
+    arr[i] = fn(n);
   });
   return arr;
-};
+}
+let increment = (num)=>++num;
+
