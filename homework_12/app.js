@@ -129,5 +129,5 @@ function detailsTanks(tank) {
     	};
     	return table;
     };
-    details.appendChild( buildTable() );
+	details.appendChild( buildTable() );
 };
