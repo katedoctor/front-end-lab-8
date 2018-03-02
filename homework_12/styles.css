@@ -1,0 +1,86 @@
+body {
+  background-color: #1C1C1F;
+  font-family: serif;
+  color: #A19E86;
+}
+h1{
+  color: #A19E86;
+  font-size: 36px;
+}
+.model {
+  color: #D7D2B7;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.block:hover {
+  background:#2C2C2C;
+}
+.block {
+  height:22%;
+  width: 16%;
+  text-align: center;
+  margin: 2% 0;
+}
+.imgTanks {
+  margin-bottom: 8px;
+  max-height: 100%;
+  max-width: 100%;
+}
+.country {
+  height: 14px;
+  width: 23px;
+  margin: 2px;
+  vertical-align: 3px;
+}
+.level {
+  margin: 3px;
+  font-weight: 600;
+  font-size: 18px;
+  vertical-align: super;
+  padding-top: 90%;
+}
+.model {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
+  vertical-align: 2px;
+}
+.tank-details {
+  display: flex;
+}
+
+.tank-details .right-contet table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+.tank-details .right-contet table td {
+  padding: 10px;
+  border: currentColor 1px solid;
+  font-size: 18px;
+}
+
+.tank-details .right-contet{
+  flex-grow: 1;
+}
+
+.tank-details .left-contet .back-btn {
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tank-details .left-contet h1 img {
+  display: inline-block;
+  margin-left: 8px;
+  margin-right: 8px;
+}
