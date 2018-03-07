@@ -1,4 +1,4 @@
-window.onload = function (){
+ function (){
   var a = prompt("Enter the amount of Euro..");
   var b = prompt(" Enter the amount of USD..");
   var euro = 33.2324;
