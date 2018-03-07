@@ -1,5 +1,4 @@
-window.onload = function() {
-
+  function() {
   var a = prompt("Enter value of first side..");
   var b = prompt("Enter value of second side..");
   var c = prompt("Enter value of third side..");
