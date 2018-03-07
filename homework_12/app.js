@@ -1,6 +1,5 @@
-var modelMap = new Object;
 var root = document.getElementById('root');
-
+ver modelMap = new Object;
 tanks.forEach( (item) => modelMap[item.model] = item );
 
 window.onhashchange = router;
@@ -13,12 +12,13 @@ function router() {
   if (location.hash == ''){
     main(tanks);
   } else {
-    detailsTanks(tank);
+    const model = location.hash.substr(1);
+    detailsTanks(tanks, model);
   }
 }
 
 function main(tanks) {
-	root.innerHTML='';
+	root.textContent='';
 
   var h1 = document.createElement('h1');
     root.appendChild(h1);
@@ -49,21 +49,21 @@ function main(tanks) {
       var level = document.createElement ("span");
       div.appendChild(level);
       level.setAttribute("id", "level");
-      level.innerHTML = tanks[i].level;
+      level.textContent = tanks[i].level;
       level.classList.add("level");
 
       var model = document.createElement("span");
       div.appendChild(model);
       model.setAttribute("name", "model");
-      model.innerHTML = tanks[i].model;
+      model.textContext = tanks[i].model;
       model.classList.add("model");
 
     }
     return list;
   }
 
-function detailsTanks(tank) {
-  	root.innerHTML='';
+function detailsTanks(tank, model) {
+  	root.textContent='';
 
     var container = document.createElement('div');
 	  container.className = 'tank-details container';
@@ -80,12 +80,12 @@ function detailsTanks(tank) {
     headline.appendChild(flag);
 
     var label = document.createElement('span');
-    label.innerHTML = tank.model.toUpperCase();
+    label.textContent = tank.model.toUpperCase();
     label.className = 'label';
     headline.appendChild(label);
 
     var level = document.createElement('span');
-    level.innerHTML = `(level ${tank.level})`;
+    level.textContent = `(level ${tank.level})`;
     level.className = 'level';
     headline.appendChild(level);
 
@@ -95,8 +95,8 @@ function detailsTanks(tank) {
 
     var preview = document.createElement('aside');
     preview.className = 'preview';
-    preview.appendChild( document.createElement('h4') )
-    preview.firstChild.innerHTML = 'Preview';
+    preview.appendChild( document.createElement('h4') );
+    preview.firstChild.textContent = 'Preview';
     flexBlock.appendChild(preview);
 
     var image = document.createElement('img');
@@ -106,13 +106,13 @@ function detailsTanks(tank) {
     var details = document.createElement('aside');
     details.className = 'details';
     details.appendChild( document.createElement('h4') )
-    details.firstChild.innerHTML = 'Characteristics';
+    details.firstChild.textContent = 'Characteristics';
     flexBlock.appendChild(details);
 
     var linkToThumbnails = document.createElement('a');
     linkToThumbnails.setAttribute('href', '#');
     linkToThumbnails.setAttribute('title', 'Back to preview');
-    linkToThumbnails.innerHTML = 'Back to list view';
+    linkToThumbnails.textContent = 'Back to list view';
     container.appendChild(linkToThumbnails);
 
     function buildTable() {
@@ -121,8 +121,8 @@ function detailsTanks(tank) {
     		var row = document.createElement('tr');
     		var property = document.createElement('td');
     		var value = document.createElement('td');
-    		value.innerHTML = tank.details[key];
-    		property.innerHTML = key.replace(/_/g, ' ');
+    		value.textContext = tank.details[key];
+    		property.textContent = key.replace(/_/g, ' ');
     		row.appendChild(property);
     		row.appendChild(value);
     		table.appendChild(row);
