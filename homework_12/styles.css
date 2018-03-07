@@ -53,45 +53,35 @@ h1{
   font-size: 15px;
   vertical-align: 2px;
 }
-.tank-details a {
-  color: #a19e89;
+a {
   text-decoration: none;
-  font-size: 1.1em;
+  color: #A19E86;
 }
-.headline {
-  font-size: 30px;
-  font-weight: 600;
-}
-.label {
-  padding: 0 10px;
-}
-.tank-details .level {
-  font-size: 30px;
-  vertical-align: baseline;
-}
-.flex {
-  display: flex;
-  flex-flow: row nowrap;
-  font-size: 1.5em;
-  margin: 10px 0;
-}
-.preview {
-  flex-basis: 43%;
-}
-.preview img {
-  width: 100%;
-}
-.details {
-  flex-basis: 57%;
-}
+
 table {
-  width: 100%;
-  margin: 20px 0;
   border-collapse: collapse;
-  font-size: 17px;
-  color: #d6d1ba;
 }
+
+caption {
+  text-align: left;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+table, th, td {
+  border: 1px #A19E86 solid;
+}
+
 td {
-  border: 1px solid #a19e89;
-  padding: 9px;
+  padding: 10px;
 }
+
+td:nth-child(1) {
+  width: 35vw;
+}
+
+td:nth-child(2) {
+  width: 15vw;
+}
+
