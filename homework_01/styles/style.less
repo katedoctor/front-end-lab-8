@@ -1,1 +1,79 @@
+@import "variable.less";
 
+
+body {
+ font-size: 100%;
+}
+
+#navbarCollapse{
+  .nav-link{
+    font-weight: 600;
+    margin-left: 10px;
+    &.active{
+      background-color: @blue;
+      color: white;
+    }
+  }
+}
+.container-fluid {
+    background-color: #F8F8F8;
+    font-size: 95%;
+    border-bottom: 1px solid #E7E7E7;
+    .logo{
+    padding-right: 15px;
+    }
+}
+
+.hr {
+    border-bottom: 1px solid @blue;
+    margin-top: ;
+    margin-bottom: 20px;
+}
+h1, h3 {
+    color: @blue;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 650;
+}
+.blue {
+    img, figcaption {
+        border: 1px solid @blue;
+        background-color: @blue;
+    }
+
+}
+
+.red {
+    img, figcaption {
+        border: 1px solid @red;
+        background-color: @red;
+    }
+}
+
+.green {
+    img, figcaption {
+        border: 1px solid @green;
+        background-color: @green;
+    }
+}
+
+.yellow {
+    img, figcaption {
+        border: 1px solid @yellow;
+        background-color: @yellow;
+    }
+}
+
+figcaption {
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.footer{
+    background-color: @gray;
+    color: white;
+    padding: 10px 0px 5px 20px;
+    margin-top: 20px;
+}
