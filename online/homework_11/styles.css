@@ -1,0 +1,28 @@
+.visible{
+  display: block;
+}
+
+ul {
+  list-style: none;
+  padding-left: 14px;
+  cursor: pointer;
+}
+
+div ul li ul {
+  display: none;
+}
+
+div ul span {
+  vertical-align: super;
+}
+
+.material-icons{
+  color: #bcbcbc;
+}
+
+.material-icons.folder{
+  color: #edbc0c;
+}
+.text-Folder {
+  font-style: italic;
+}
