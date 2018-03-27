@@ -100,6 +100,7 @@ function Champion({ name, attack, hitpoints }) {
       this.gets1();
     }
   }
+}
 
 
 Champion.prototype = Object.create(Config.prototype);
