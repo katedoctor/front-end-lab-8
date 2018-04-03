@@ -1,6 +1,6 @@
 body{
   font-family: Georgia, 'Times New Roman', Times, serif;
-  height: 135vh;
+  height: 145vh;
   background: linear-gradient(#3775FF, #A958E8);
   opacity: 0.8;
   display: flex;
@@ -9,6 +9,15 @@ body{
   flex-wrap: nowrap;
   margin: 0 auto;
   padding: 0;
+}
+#load{
+  display: none;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 50%;
+  left: 45%;
+  margin: 20px 0;
 }
 #container{
   box-sizing: border-box;
@@ -56,7 +65,7 @@ body{
 table {
   margin-top: 2%;
    border: 2px solid #353535;
-   background-color: rgba(185, 175, 164, 0.1);
+   background-color: rgba(185, 175, 164, 0.3);
    border-collapse: collapse;
    width: 100%;
    text-align: left;
