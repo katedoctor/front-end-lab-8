@@ -1,1 +1,76 @@
+body{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  height: 135vh;
+  background: linear-gradient(#3775FF, #A958E8);
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+  padding: 0;
+}
+#container{
+  box-sizing: border-box;
+}
 
+.form {
+  position: relative;
+  width: 160%;
+  right: 24%;
+
+}
+#form-input {
+  width: 95%;
+  height: 42px;
+  padding-left: 10px;
+  border: 2px solid rgb(13, 9, 37);
+  border-radius: 5px;
+  outline: none;
+  background: #F9F0DA;
+  color: #9E9C9C;
+}
+#btnIP {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+   width: 35%;
+  height: 46px;
+  color: white;
+  border: 1px solid rgb(13, 9, 37);
+  background: #7BA7AB;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+#btn-response{
+  width: 95%;
+  margin-left:2%;
+  height: 30px;
+  color: white;
+  border: 2px solid rgb(13, 9, 37);
+  background: #7BA7AB;
+  border-radius:  5px;
+  cursor: pointer;
+}
+table {
+  margin-top: 2%;
+   border: 2px solid #353535;
+   background-color: rgba(185, 175, 164, 0.1);
+   border-collapse: collapse;
+   width: 100%;
+   text-align: left;
+   padding: 8px;
+}
+#table td {
+    padding: 5px;
+    border-bottom: 1px solid #353535;
+}
+h3{
+  margin-left: 15%;
+  font-size: 1em;
+  font-weight: 700;
+}
+#btnIP:hover{
+cursor: circle;
+}
