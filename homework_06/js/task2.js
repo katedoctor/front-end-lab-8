@@ -2,13 +2,16 @@ const btn = document.getElementById("btnIP"),
       btnResponse = document.getElementById("btn-response"),
       ip = document.getElementById("form-input"),
       respon = document.getElementById("response-result");
+      loading = document.getElementById("load");
 let response;
 
 btn.onclick = function() {
   if(validateIP(ip)){
+  loading.style.display = "block";
   const url = `https://ipapi.co/${ip.value}/json/`;
   http.get(url).then(result => {
     response = result;
+    loading.style.display = "none";
     createTable(JSON.parse(result));
   });
   }else{
