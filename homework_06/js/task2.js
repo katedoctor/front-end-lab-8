@@ -11,6 +11,7 @@ btn.onclick = function() {
   const url = `https://ipapi.co/${ip.value}/json/`;
   http.get(url).then(result => {
     response = result;
+    table.innerHTML = "";
     loading.style.display = "none";
     createTable(JSON.parse(result));
   });
