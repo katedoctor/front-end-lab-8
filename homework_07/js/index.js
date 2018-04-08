@@ -27,22 +27,23 @@ $(`.data-dots`).one('click', (function(e){
       id = $(this).attr("id");
   if(move%2 ===0) {
     $(ring).addClass(`white`);
-    console.log($(this).parent().prev().prev().children(`#${id}`));
-    $(ring).css({ 'background': 'white' });
+    $(ring).css({ 'background': 'linear-gradient(45deg, white, rgb(190, 190, 190))' });
     $(black).css({ 'opacity': '1'});
     $(white).css({ 'opacity': '0.4' });
     horizon($(this), `white`);
     vertical($(this), `white`, id);
-    diagonal($(this), `black`, id);
+    diagonal($(this), `white`, id);
+    console.log(`white: ${id}`);
   }else{
     $(ring).addClass(`black`);
     // console.log(ring);
-    $(ring).css({'background': 'black'});
+    $(ring).css({ 'background': 'linear-gradient(45deg, black, #808080)'});
     $(white).css({ 'opacity': '1' });
     $(black).css({ 'opacity': '0.4' });
     horizon($(this), `black`);
     vertical($(this), `black`, id);
     diagonal($(this), `black`, id);
+    console.log(`black:${id}`);
   }
   move++;
 }));
@@ -62,14 +63,14 @@ function horizon(self, color){
 };
 function vertical(self, color, id){
   if(
+     (self.parent().prev().children(`#${id}`).is(`.${color}`) && self.parent().prev().prev().children(`#${id}`).is(`.${color}`) &&
+      self.parent().prev().prev().prev().children(`#${id}`).is(`.${color}`)) ||
+    (self.parent().next().children(`#${id}`).is(`.${color}`) && self.parent().next().next().children(`#${id}`).is(`.${color}`) &&
+      self.parent().next().next().next().children(`#${id}`).is(`.${color}`)) ||
+    (self.parent().prev().children(`#${id}`).is(`.${color}`) && self.parent().next().children(`#${id}`).is(`.${color}`) &&
+      self.parent().next().next().children(`#${id}`).is(`.${color}`)) ||
     (self.parent().prev().children(`#${id}`).is(`.${color}`) && self.parent().prev().prev().children(`#${id}`).is(`.${color}`) &&
-   self.parent().prev().prev().children(`#${id}`).is(`.${color}`)) ||
-    (self.parent().next().children(`#${id}`).is(`.${color}`) && self.parent().next().children(`#${id}`).is(`.${color}`) &&
-      self.parent().next().next().next().children(`#${id}`).is(`.${color}`) )||
-    (self.parent().prev().children(`#${id}`).is(`.${color}`) && self.parent().children(`#${id}`).is(`.${color}`) &&
-      self.parent().next().next().children(`#${id}`).is(`.${color}`) )||
-    (self.parent().prev().children(`#${id}`).is(`.${color}`) && self.parent().prev().prev().children(`#${id}`).is(`.${color}`) &&
-      self.parent().children(`#${id}`).is(`.${color}`))
+      self.parent().next().children(`#${id}`).is(`.${color}`))
   ) {
     $(`h2`).replaceWith(`<h2><span>${color} won!^_^</span></h2>`);
       console.log(color);
@@ -81,7 +82,39 @@ function vertical(self, color, id){
 };
 
 function diagonal(self, color, id){
+  id=`${Number(id)}`;
+  if(
+    (self.parent().prev().children(`#${+id - 1}`).is(`.${color}`) && self.parent().prev().prev().children(`#${+id - 2}`).is(`.${color}`) &&
+      self.parent().prev().prev().prev().children(`#${+id - 3}`).is(`.${color}`)) ||
+    (self.parent().next().children(`#${+id + 1}`).is(`.${color}`) && self.parent().next().next().children(`#${+id + 2}`).is(`.${color}`) &&
+      self.parent().next().next().next().children(`#${+id + 3}`).is(`.${color}`)) ||
+    (self.parent().prev().children(`#${+id - 1}`).is(`.${color}`) && self.parent().next().children(`#${+id + 1}`).is(`.${color}`) &&
+      self.parent().next().next().children(`#${+id + 2}`).is(`.${color}`)) ||
+    (self.parent().prev().children(`#${+id - 1}`).is(`.${color}`) && self.parent().prev().prev().children(`#${+id - 2}`).is(`.${color}`) &&
+      self.parent().next().children(`#${+id + 1}`).is(`.${color}`))
 
+  ) {
+    $(`h2`).replaceWith(`<h2><span>${color} won!^_^</span></h2>`);
+    console.log(color);
+    game = true;
+    gameAgain(game);
+    return;
+  } else if (
+    (self.parent().prev().children(`#${+id + 1}`).is(`.${color}`) && self.parent().prev().prev().children(`#${+id + 2}`).is(`.${color}`) &&
+      self.parent().prev().prev().prev().children(`#${+id + 3}`).is(`.${color}`)) ||
+    (self.parent().next().children(`#${+id - 1}`).is(`.${color}`) && self.parent().next().next().children(`#${+id - 2}`).is(`.${color}`) &&
+      self.parent().next().next().next().children(`#${+id - 3}`).is(`.${color}`)) ||
+    (self.parent().prev().children(`#${+id + 1}`).is(`.${color}`) && self.parent().next().children(`#${+id - 1}`).is(`.${color}`) &&
+      self.parent().next().next().children(`#${+id - 2}`).is(`.${color}`)) ||
+    (self.parent().prev().children(`#${+id + 1}`).is(`.${color}`) && self.parent().prev().prev().children(`#${+id + 2}`).is(`.${color}`) &&
+      self.parent().next().children(`#${+id - 1}`).is(`.${color}`))
+  ) {
+    $(`h2`).replaceWith(`<h2><span>${color} won!^_^</span></h2>`);
+    console.log(color);
+    game = true;
+    gameAgain(game);
+    return;
+  }
 };
 
 function gameAgain(game){
