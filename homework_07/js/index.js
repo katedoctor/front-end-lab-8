@@ -27,7 +27,7 @@ $(`.data-dots`).one('click', (function(e){
       id = $(this).attr("id");
   if(move%2 ===0) {
     $(ring).addClass(`white`);
-    $(ring).css({ 'background': 'linear-gradient(45deg, white, rgb(190, 190, 190))' });
+    $(ring).css({ 'background': 'linear-gradient(225deg, white, rgb(184, 182, 182))' });
     $(black).css({ 'opacity': '1'});
     $(white).css({ 'opacity': '0.4' });
     horizon($(this), `white`);
