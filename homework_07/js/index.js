@@ -33,17 +33,14 @@ $(`.data-dots`).one('click', (function(e){
     horizon($(this), `white`);
     vertical($(this), `white`, id);
     diagonal($(this), `white`, id);
-    console.log(`white: ${id}`);
   }else{
     $(ring).addClass(`black`);
-    // console.log(ring);
-    $(ring).css({ 'background': 'linear-gradient(45deg, black, #808080)'});
+     $(ring).css({ 'background': 'linear-gradient(45deg, black, #808080)'});
     $(white).css({ 'opacity': '1' });
     $(black).css({ 'opacity': '0.4' });
     horizon($(this), `black`);
     vertical($(this), `black`, id);
     diagonal($(this), `black`, id);
-    console.log(`black:${id}`);
   }
   move++;
 }));
@@ -54,7 +51,6 @@ function horizon(self, color){
      (self.next().is(`.${color}`) && self.next().next().is(`.${color}`) && self.next().next().next().is(`.${color}`))||
        (self.prev().is(`.${color}`) && self.prev().prev().is(`.${color}`) && self.prev().prev().prev().is(`.${color}`)) ||
         (self.prev().is(`.${color}`) && self.prev().prev().is(`.${color}`) && self.next().is(`.${color}`))) {
-    console.log(color);
     $(`h2`).replaceWith(`<h2><span>${color} won!^_^</span></h2>`);
       game = true;
       gameAgain(game);
@@ -73,7 +69,6 @@ function vertical(self, color, id){
       self.parent().next().children(`#${id}`).is(`.${color}`))
   ) {
     $(`h2`).replaceWith(`<h2><span>${color} won!^_^</span></h2>`);
-      console.log(color);
       game = true;
       gameAgain(game);
       return;
@@ -95,7 +90,6 @@ function diagonal(self, color, id){
 
   ) {
     $(`h2`).replaceWith(`<h2><span>${color} won!^_^</span></h2>`);
-    console.log(color);
     game = true;
     gameAgain(game);
     return;
@@ -110,7 +104,6 @@ function diagonal(self, color, id){
       self.parent().next().children(`#${+id - 1}`).is(`.${color}`))
   ) {
     $(`h2`).replaceWith(`<h2><span>${color} won!^_^</span></h2>`);
-    console.log(color);
     game = true;
     gameAgain(game);
     return;
@@ -119,7 +112,7 @@ function diagonal(self, color, id){
 
 function gameAgain(game){
 if(game){
-  $('.btn_again').css({'visibility': 'visible'})
+  $('.btn_again').css({'visibility': 'visible'});
  }else{
    return;
  }
