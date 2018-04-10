@@ -8,7 +8,7 @@ exports.get = (req, res) => {
 };
 
 exports.getId = (req, res) => {
-  const rockstars = rock.find(c => c.id === parseInt(res.params.id));
+  const rockstars = rock.find(c => c.id === parseInt(req.params.id));
   if(!rockstars) {
     return res.status(404).send('rockstars with this id was not found');
   };
