@@ -1,33 +1,36 @@
 const fs = require('fs');
-var path = require('path');
-var storage = fs.readFileSync('data/storage.json');
-var rock = JSON.parse(storage);
+const path = require('path');
+const rock = JSON.parse(fs.readFileSync('./data/storage.json'));
+
 
 exports.get = (req, res) => {
   res.status(200).send(rock);
 };
 
 exports.getId = (req, res) => {
-  const rockstars = rock.find(c => c.id === parseInt(req.params.id));
-  if(!rockstars) {
+ const rockstar = rock.find(c => {
+   return c.id === parseInt(req.params.id);
+ });
+  if(!rockstar) {
     return res.status(404).send('rockstars with this id was not found');
   };
-  res.status(200).send(rockstars);
+  res.status(200).send(rockstar);
+
 };
 
 exports.post = (req, res) => {
   if (!req.body.name || !req.body.band || !req.body.instrument) {
     return res.sendStatus(400).send('Data is required');
   };
-  const rockstar = rock.find( c =>  c.name === req.body.name);
+  const rockstar = rock.find(c => c.name === req.body.name);
   if(rockstar){
     return res.status(409).send({'message':'rockstar already exist'});
   };
-  const rockstars = {
-    'id': req.length +1,
-    'name': req.body.name,
-    'band': req.body.band,
-    'instrument': req.body.instrument
+  rockstars = {
+    "id": rock.length + 1,
+    "name": req.body.name,
+    "band": req.body.band,
+    "instrument": req.body.instrument
   };
   rock.push(rockstars);
   res.sendStatus(201).send(rockstars);
@@ -35,7 +38,7 @@ exports.post = (req, res) => {
 };
 
 exports.put = (req, res) => {
-  const rockstars = rock.find(c =>  c.id === parseInt(req.params.id));
+  const rockstars = rock.find(c => c.id === parseInt(req.params.id));
   if(!rockstars){
     return res.status(404).send('rockstars with this id was not found');
   };
@@ -47,6 +50,7 @@ exports.put = (req, res) => {
 };
 
 exports.delete = (req, res) => {
+  // http://localhost:3000/rockstars/2 without :
   const rockstars = rock.find(c => c.id === parseInt(req.params.id));
   if(!rockstars) {
     return res.status(404).send('rockstars with this id was not found');
