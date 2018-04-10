@@ -50,8 +50,7 @@ exports.put = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  // http://localhost:3000/rockstars/2 without :
-  const rockstars = rock.find(c => c.id === parseInt(req.params.id));
+   const rockstars = rock.find(c => c.id === parseInt(req.params.id));
   if(!rockstars) {
     return res.status(404).send('rockstars with this id was not found');
   };
