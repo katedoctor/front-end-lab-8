@@ -1,4 +1,5 @@
 var express = require('express'),
+    fs = require('fs'),
     router = express.Router(),
     handlers = require('./controllers/handlers');
 

@@ -1,11 +1,12 @@
 process.stdout.write('What are you waiting for? \n');
-const express = require('express'),
+const fs = require('fs'),
+      express = require('express'),
       app = express();
 
 app.use(express.json());
 var handlers = require('./controllers/handlers.js')
 
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening to port ${port}`));
 
 app.get('/rockstars', handlers.get);
