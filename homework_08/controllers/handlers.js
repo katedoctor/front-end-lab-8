@@ -3,10 +3,25 @@ var storage = fs.readFileSync('data/storage.json');
 var rock = JSON.parse(storage);
 
 exports.get = (req, res) => {
+//     fs.readFile('./data/storange.json', function(error, data) {
+//         if (error) return res.sendStatus(500)
+//         try {
+//           var rock = JSON.parse(data)
+//         } catch (error) {
+//           return res.sendStatus(500)
+//         }
     res.status(200).send(rock);
+// });
 };
 
 exports.getId = (req, res) => {
+    //     fs.readFile('./data/storange.json', function(error, data) {
+//         if (error) return res.sendStatus(500)
+//         try {
+//           var rock = JSON.parse(data)
+//         } catch (error) {
+//           return res.sendStatus(500)
+//         }
     const rockstar = rock.find(c => {
       return c.id === parseInt(req.params.id);
     });
@@ -14,9 +29,9 @@ exports.getId = (req, res) => {
       return res.status(404).send('rockstars with this id was not found');
     };
     res.status(200).send(rockstar);
-
+// });
 };
-
+//get mistake 
 exports.post = (req, res) => {
     if (!req.body.name || !req.body.band || !req.body.instrument) {
       return res.sendStatus(400).send('Data is required');
