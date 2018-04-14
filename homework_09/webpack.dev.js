@@ -11,6 +11,7 @@ module.exports = merge(common, {
   ],
   devServer: {
     contentBase: './bin',
+    port: 8080,
     stats: 'errors-only'
   }
 });
