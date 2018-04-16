@@ -24,33 +24,54 @@ class NumberInput extends Input {
     }
 }
 
-let numberInput = new NumberInput("Type numbers...");
 
-NumberInput.decorators = {};
 
-NumberInput.decorators.AddRequiredValidation = {
-    valid: function(){
-        let value = this._super.getValue();
-        if(typeof(value) === "undefined" ){
-            return `false, because of required validator`;
-            return false;
-        }
+function AddRequiredValidation(obj){
+    if(!('valid' in obj)){
+         obj.valid = false;
     }
-};
-NumberInput.decorators.AddRequiredValidation = {
-    valid: function () {
-        let value = this._super.getValue();
-        const max = 10;
+    obj.setValue = function (val) {
+        obj.valid = validate(val);
+        obj.newValue = val;
     }
-};
-NumberInput.decorators.AddRequiredValidation = {
-     valid: function () {
-        let value = this._super.getValue();
+    function validate(newValue) {
+        return (typeof(newValue) !== 'undefined') + `, because of required validator`;
     }
 }
 
+function AddMaxLengthValidation(obj, max) {
+    AddRequiredValidation.call(this, obj);
+    if (!('valid' in obj)) {
+        obj.valid = false;
+    }
+    obj.setValue = function (val) {
+        obj.valid = validate(val);
+        console.log(val);
+        obj.newValue = val;
+    }
+    function validate(newValue) {
+        return (newValue.toString().length <= max) + `,  because of max length validator`;
+    }
+}
+function AddNumberValidation(obj) {
+    AddRequiredValidation.call(this, obj);
+    if (!('valid' in obj)) {
+        obj.valid = false;
+    }
+    obj.setValue = function (val) {
+        obj.valid = validate(val);
+        console.log(val);
+        obj.newValue = val;
+    }
+    function validate(newValue) {
+        return (typeof (newValue) === "number") +`, because of number validator`;
+    }
+}
+let numberInput = new NumberInput("Type numbers...");
+// AddRequiredValidation(numberInput);
+// AddMaxLengthValidation(numberInput, 3);
+// AddNumberValidation(numberInput);
 
-// numberInput = AddRequiredValidation(numberInput);
 
 //  Then you can create add validation decorators and add functionality to numberInput
 //  AddRequiredValidation Decorator that add required validation
