@@ -90,39 +90,39 @@ let numberInput = new NumberInput("Type numbers...");
 
 
 AddRequiredValidation(numberInput);
-console.lod(numberInput.valid)
+console.log(numberInput.valid)
 //false
 numberInput.setValue(1)
-console.lod(numberInput.valid)
+console.log(numberInput.valid)
 // true
 numberInput.setValue("")
-console.lod(numberInput.valid)
+console.log(numberInput.valid)
 //"false, you did not enter a number"
 
 
 AddMaxLengthValidation(numberInput, 9);
 numberInput.setValue(12345)
-console.lod(numberInput.valid)
+console.log(numberInput.valid)
 //true
 numberInput.setValue(123456789)
-console.lod(numberInput.valid)
+console.log(numberInput.valid)
 //false, because this bigger then max length 9
 
 
 AddNumberValidation(numberInput);
 numberInput.setValue(12345)
-console.lod(numberInput.valid)
+console.log(numberInput.valid)
 //true
 numberInput.setValue('epam')
-console.lod(numberInput.valid)
+console.log(numberInput.valid)
 //"false, because this not a number"
 numberInput.setValue('1')
-console.lod(numberInput.valid)
+console.log(numberInput.valid)
 //"false, because this not a number"
 
 AddRequiredValidation(numberInput);
 AddMaxLengthValidation(numberInput, 9);
 AddNumberValidation(numberInput);
 numberInput.setValue(1)
-console.lod(numberInput.valid)
+console.log(numberInput.valid)
 //true
