@@ -7,14 +7,10 @@ class Input {
     get value() {
         return this._value;
     }
-    getValue(){
-        return this._value;
-    }
 
     setValue(newValue) {
         this._value = newValue;
     }
-
 }
 
 class NumberInput extends Input {
@@ -22,73 +18,111 @@ class NumberInput extends Input {
         super(placeHolder);
         this.type = "number";
     }
+
 }
 
 
+function AddRequiredValidation(obj) {
+    if (!("valid" in obj)) {
+        obj.valid = false;
+    }
+    obj.setValue = function(value){
+    obj.valid = validate(value);
+    obj.valid = message(obj.valid);
+    }
+    function validate(value){
+        return typeof value !== "undefined" && value !=="";
+     }
+    function message(prop) {
+        if (!obj.valid) {
+            return `false, you did not enter a number`
+        } else {
+            return obj.valid;
+        }
+    }
 
-function AddRequiredValidation(obj){
-    if(!('valid' in obj)){
-         obj.valid = false;
-    }
-    obj.setValue = function (val) {
-        obj.valid = validate(val);
-        obj.newValue = val;
-    }
-    function validate(newValue) {
-        return (typeof(newValue) !== 'undefined') + `, because of required validator`;
-    }
 }
+
 
 function AddMaxLengthValidation(obj, max) {
-    AddRequiredValidation.call(this, obj);
-    if (!('valid' in obj)) {
+    if (!("valid" in obj)) {
         obj.valid = false;
     }
-    obj.setValue = function (val) {
-        obj.valid = validate(val);
-        console.log(val);
-        obj.newValue = val;
+    obj.setValue = function(value){
+    obj.valid = validate(value);
+    obj.valid = message(obj.valid);
     }
-    function validate(newValue) {
-        return (newValue.toString().length <= max) + `,  because of max length validator`;
+    function validate(value) {
+        return (value.toString().length < max);
+    }
+    function message(prop){
+        if(!obj.valid){
+            return `false, because this bigger then max length ${max}`
+        }else{
+            return obj.valid;
+        }
     }
 }
+
+
 function AddNumberValidation(obj) {
-    AddRequiredValidation.call(this, obj);
-    if (!('valid' in obj)) {
+    if (!("valid" in obj)) {
         obj.valid = false;
     }
-    obj.setValue = function (val) {
-        obj.valid = validate(val);
-        console.log(val);
-        obj.newValue = val;
+    obj.setValue = function(value){
+    obj.valid = validate(value);
+    obj.valid = message(obj.valid);
     }
-    function validate(newValue) {
-        return (typeof (newValue) === "number") +`, because of number validator`;
+    function validate(value) {
+        return typeof(value) === "number";
+    }
+    function message(prop) {
+        if (!obj.valid) {
+            return `false, because this not a number`
+        } else {
+            return obj.valid;
+        }
     }
 }
+
+
 let numberInput = new NumberInput("Type numbers...");
-// AddRequiredValidation(numberInput);
-// AddMaxLengthValidation(numberInput, 3);
-// AddNumberValidation(numberInput);
 
 
-//  Then you can create add validation decorators and add functionality to numberInput
-//  AddRequiredValidation Decorator that add required validation
-//  AddMaxLengthValidation Decorator that add max length validation
-//  AddNumberValidation Decorator for only number values validation
+AddRequiredValidation(numberInput);
+console.lod(numberInput.valid)
+//false
+numberInput.setValue(1)
+console.lod(numberInput.valid)
+// true
+numberInput.setValue("")
+console.lod(numberInput.valid)
+//"false, you did not enter a number"
 
 
-// The desired behaviour would be
-// console.log(numberInput.valid) ---> false, because of required validator
-// numberInput.setValue("1");
-// console.log(numberInput.valid) ---> false, because of number validator
-// numberInput.setValue(1);
-// console.log(numberInput.valid) ---> true, all validators pass
-// numberInput.setValue(1111111111111111111111111111);
-// console.log(numberInput.valid) ---> false, because of max length validator
-
-// Notice after applying some validator to an object, it gets additional "valid" property;
+AddMaxLengthValidation(numberInput, 9);
+numberInput.setValue(12345)
+console.lod(numberInput.valid)
+//true
+numberInput.setValue(123456789)
+console.lod(numberInput.valid)
+//false, because this bigger then max length 9
 
 
+AddNumberValidation(numberInput);
+numberInput.setValue(12345)
+console.lod(numberInput.valid)
+//true
+numberInput.setValue('epam')
+console.lod(numberInput.valid)
+//"false, because this not a number"
+numberInput.setValue('1')
+console.lod(numberInput.valid)
+//"false, because this not a number"
 
+AddRequiredValidation(numberInput);
+AddMaxLengthValidation(numberInput, 9);
+AddNumberValidation(numberInput);
+numberInput.setValue(1)
+console.lod(numberInput.valid)
+//true
