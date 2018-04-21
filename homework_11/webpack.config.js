@@ -7,7 +7,7 @@ module.exports = {
   context: path.resolve('src'),
   entry: {
     'bundle.js' : ['./js/calculating-module.js', './js/interface-module.js', './js/output-module.js'],
-    'style.css' : './styles/styles.css',
+    'styles.css' : './styles/styles.css',
   },
   module: {
     rules: [
