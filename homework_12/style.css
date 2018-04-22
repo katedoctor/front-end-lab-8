@@ -75,3 +75,65 @@ body {
 .profile h3 {
     margin: 0 0 10px;
 }
+.sort-controls {
+    cursor: pointer;
+    margin:0;
+    padding: 0;
+    width: 382px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sort-name {
+    width:290px;
+    padding: 5px 10px 0;
+    position: relative;
+    display: inline-block;
+    border: 1px solid rgb(223, 221, 221);
+
+}
+.sort-score {
+    width: 60px;
+    padding: 5px 9px 0 10px;
+    border: 1px solid rgb(223, 221, 221);
+    display: flex;
+    display: inline-block;
+}
+
+.arrows {
+    position: relative;
+    width: 10px;
+}
+
+.arrow-down, .arrow-up {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+
+}
+.sort-name .arrow-up {
+    border-bottom: 8px solid #727272;
+    position: absolute;
+    bottom: 27px;
+    left: 270px;
+}
+.sort-name .arrow-down {
+    border-top: 8px solid #727272;
+    position: absolute;
+    bottom: 16px;
+    left: 270px;
+}
+.sort-score .arrow-up {
+    border-bottom: 8px solid #727272;
+    position: absolute;
+    bottom: 27px;
+    left: 50px;
+}
+.sort-score .arrow-down {
+    border-top: 8px solid #727272;
+    position: absolute;
+    bottom: 16px;
+    left: 50px;
+}

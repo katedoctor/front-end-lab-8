@@ -74,6 +74,8 @@ const control = {
         scoresView.render();
 
         profileView.init();
+
+        sortPerson.init();
     },
     getAllNames: function() {
         return model.allPersons.map(el=>el.name);
@@ -167,5 +169,92 @@ const profileView = {
         this.$container.html(template);
     }
 };
+
+const sortPerson = {
+    init: function() {
+        this.render();
+        this.sortByName();
+        this.sortByScore();
+
+    },
+    render: function() {
+        let template = `
+        <div class="sort-name">
+            <h3>Name</h3>
+            <div class="arrows">
+            <span class="arrow-up"></span>
+            <span class="arrow-down"></span>
+            </div>
+        </div>
+        <div class="sort-score">
+            <h3>Score</h3>
+            <div class="arrows">
+            <span class="arrow-up"></span>
+            <span class="arrow-down"></span>
+            </div>
+        </div>`;
+        $('.sort-controls').append(template);
+    },
+
+    sortByName: function () {
+        let up = false;
+
+        $('.sort-name').click(function() {
+            if(!up) {
+                model.allPersons.sort(function(a, b) {
+                    return a.name.localeCompare(b.name);
+                });
+                $('.sort-name .arrow-up').css({ 'border-bottom':'8px solid #00bdd5'});
+                $('.sort-name .arrow-down').css({ 'border-top': '8px solid white' });
+            listView.render();
+            scoresView.render();
+            up = true;
+            return;
+            }else{
+                model.allPersons.sort(function (a, b) {
+                    return b.name.localeCompare(a.name)
+                });
+                $('.sort-name .arrow-down').css({ 'border-top': '8px solid #00bdd5' });
+                $('.sort-name .arrow-up').css({ 'border-bottom': '8px solid white' });
+                listView.render();
+                scoresView.render();
+                up = false;
+                return;
+            }
+
+        })
+    },
+    sortByScore: function() {
+        let up = false;
+
+        $('.sort-score').click(function() {
+            if(!up) {
+                model.allPersons.sort(function(a, b) {
+                    return a.score - b.score;
+                });
+                $('.sort-score .arrow-up').css({ 'border-bottom': '8px solid #00bdd5' });
+                $('.sort-score .arrow-down').css({ 'border-top': '8px solid white' });
+                listView.render();
+                scoresView.render();
+                up = true;
+                return;
+            };
+            if(up){
+                model.allPersons.sort(function(a,b) {
+                    return b.score - a.score;
+                });
+                $('.sort-score .arrow-down').css({ 'border-top': '8px solid #00bdd5' });
+                $('.sort-score .arrow-up').css({ 'border-bottom': '8px solid white' });
+                listView.render();
+                scoresView.render();
+                up = false;
+                return;
+            }
+        })
+
+
+    }
+
+}
 
 control.init();
