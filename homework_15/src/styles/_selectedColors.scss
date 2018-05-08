@@ -31,6 +31,18 @@
     }
   }
   .selected {
-    border:none;  
+    border:none;
+    width:55px;
+    height: 55px;
+    position: relative;
+
+
+  }
+      i{
+      font: size 12px;
+      border-radius: 50%;
+      background: red ;
+      position: absolute;
+      top:-1px;
   }
 }

@@ -17,6 +17,7 @@ class App extends Component {
       searchStr: '',
       doesShowColor: true
     }
+    this.removeColor = this.removeColor.bind(this);
   }
 
   handleChange (e){
@@ -25,19 +26,6 @@ class App extends Component {
     });
   }
 
-  // createList(item, id){
-  //   return (
-  //     <div key={item.id} >
-  //       <ListofAvailableColorItems color={item.color} id={item.id}/>
-  //     </div>
-  //   )
-  // }
-
-  handlerClick() {
-    this.setState({selectedColors: 'red'})
-    // let id = target.event.id;
-    // this.setState({ selectedColors: id})
-  }
 
   filterSearch() {
     let searchStr = this.state.searchStr;
@@ -52,17 +40,42 @@ class App extends Component {
   }
 
   addColor(color) {
-    console.log(this.state.selectedColors)
-    if(this.state.selectedColors.length < 11) {
+    if(this.state.selectedColors.length < 10){
+    let add = this.state.showColor.find(item=>item.color === color);
+    let index = this.state.showColor.indexOf(add);
+    let colors = this.state.selectedColors;
+    colors.push(color);
 
-      // let suitable = this.state.suitableColor;
-      // let index = suitable.indexOf(color);
-      // suitable.slice(index, 1);
-      // this.setState({
-      //   selectedColors: color,
-      // suitableColor: suitable})
-    }
+    let showColor = this.state.showColor;
+    showColor.splice(index,1);
+
+    this.setState({
+      selectedColors: colors,
+      showColor: showColor,
+      doesShowColor: false
+    })}
+
     console.log(color);
+  }
+
+  removeColor(color) {
+    let deleteColor = this.state.selectedColors.find(item=>item.color === color);
+    let index = this.state.selectedColors.indexOf(deleteColor);
+    let showColor = this.state.showColor;
+    showColor.push(deleteColor);
+
+    let selected = this.state.selectedColors;
+    selected.splice(index, 1);
+
+    this.setState({
+      showColor: showColor,
+      selectedColors: selected,
+    })
+    if(this.state.selectedColors.length === 0) {
+      this.setState({
+        doesShowColor: true
+      })
+    }
 
   }
 
@@ -76,6 +89,9 @@ class App extends Component {
 
 
 
+
+
+
   render() {
     let color = this.state.showColor;
     let message = '';
@@ -83,6 +99,7 @@ class App extends Component {
       message = 'There no color found'
     }
       return (
+<<<<<<< HEAD
             <div className="">
             <div className="header">
               <Filter
@@ -101,6 +118,33 @@ class App extends Component {
               })}
             </div>
             </div>
+=======
+          <div>
+            <div className="header">
+              <Filter onChange={this.handleChange.bind(this)}/>
+
+                <SelectedColors
+                doesShowColor={this.state.doesShowColor}
+                list={this.state.selectedColors}
+                onClick={this.removeColor.bind(this)}/>
+
+                <AmountofColorItems
+                length={this.state.showColor.length}
+                />
+             </div>
+             <div className="color-box">
+              {message}
+              {color.map((item, id) => {
+              return <div key={id}>
+                        <ListofAvailableColorItems
+                        color={item.color} id={item.id}
+                        showColor={this.state.showColor}
+                        onClick={this.addColor.bind(this)}/>
+                      </div>
+                    })}
+             </div>
+          </div>
+>>>>>>> homework_15
     )
   }
 }
