@@ -53,7 +53,9 @@ class App extends Component {
       selectedColors: colors,
       showColor: showColor,
       doesShowColor: false
-    })}
+    }),()=> {
+      this.filterSearch();
+    }}
 
     console.log(color);
   }
@@ -66,11 +68,15 @@ class App extends Component {
 
     let selected = this.state.selectedColors;
     selected.splice(index, 1);
+    showColor.sort(function (a, b) {
+      return (a.id - b.id);
+    });
 
     this.setState({
       showColor: showColor,
       selectedColors: selected,
-    })
+    },()=>
+  this.filterSearch());
     if(this.state.selectedColors.length === 0) {
       this.setState({
         doesShowColor: true
@@ -85,9 +91,6 @@ class App extends Component {
       .then(data => this.setState({ showColor: data, suitableColor: data }))
         .catch(err => console.error(err))
   }
-
-
-
 
 
 
