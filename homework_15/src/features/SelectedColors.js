@@ -12,7 +12,7 @@ const SelectedColors = (props) => {
       </div>:
          props.list.slice(-5).map((color, index)=> {
           return <div key={index} className="selected" style={{ background: color }}>
-                    <i className="material-icons"
+                    <i className="material-icons delete"
                     onClick={() => {props.onClick(color.color)}}>
               clear</i>
           </div>})

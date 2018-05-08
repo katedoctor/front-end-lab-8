@@ -15,7 +15,6 @@ class ListofAvailableColorItems extends Component {
             <i className="material-icons">add</i>Add</button>
       }
 
-      {this.props.text}
       </div>
     )
 
