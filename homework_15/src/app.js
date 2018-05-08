@@ -14,7 +14,7 @@ class App extends Component {
       selectedColors: [],
       suitableColor: [],
       searchStr: '',
-      doesShowAll: false
+      doesShowColor: true
     }
   }
 
@@ -60,11 +60,15 @@ class App extends Component {
     let color = this.state.showColor;
     return (
             <div className="">
+            <div className="header">
               <SearchForm
                 onChange={this.handleChange.bind(this)}/>
-                <SelectedColors color={this.state.selectedColors}/>
+                <SelectedColors doesShowColor={this.state.doesShowColor} color={this.state.selectedColors}/>
               <CounterColor length={this.state.showColor.length} />
+        </div>
+              <div className="color-box">
               {color.map(this.createList)}
+              </div>
               {/* <ColorItems onClick={this.Click.bind(this)} /> */}
             </div>
     )

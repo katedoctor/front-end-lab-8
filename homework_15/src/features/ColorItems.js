@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class ColorItems extends Component {
   HandlerClick(props) {
     return (
@@ -8,8 +9,8 @@ class ColorItems extends Component {
   }
   render() {
     return(
-      <div className="color-item" style={{ background: this.props.color, width: '200px' }} ><a href='#' onClick={() => this.HandlerClick(this.props.color)}>add</a>
-        {this.props.color}
+      <div className="color-item" style={{ background: this.props.color, width: '200px' }} ><a href='#' onClick={() => this.HandlerClick(this.props.color)}></a>
+        {/* {this.props.color} */}
       </div>
     )
   }
