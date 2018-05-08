@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SearchForm from './features/SearchForm';
-// // import SelectedColors from './features/SelectedColors';
+import ColorItems from './features/ColorItems';
+import CounterColor from './features/CounterColor';
+import SelectedColors from './features/SelectedColors';
 import { hot } from 'react-hot-loader';
 
 class App extends Component {
@@ -23,20 +25,18 @@ class App extends Component {
   }
 
   createList(item, id){
-    const style = {
-      backgroundColor: 'red',
-      width: '150px',
-      heigth: '30px',
-      margin: '10px'
-    }
     return (
-      <div key={item.id} style={style}>
-       {item.color}
+      <div key={item.id} >
+       <ColorItems color={item.color} />
       </div>
     )
-
   }
 
+  HandlerClick() {
+    this.setState({selectedColors: 'red'})
+    // let id = target.event.id;
+    // this.setState({ selectedColors: id})
+  }
 
   componentDidMount() {
     fetch('https://epam-fe-homework-15.firebaseio.com/colors.json')
@@ -62,8 +62,10 @@ class App extends Component {
             <div className="">
               <SearchForm
                 onChange={this.handleChange.bind(this)}/>
+                <SelectedColors color={this.state.selectedColors}/>
+              <CounterColor length={this.state.showColor.length} />
               {color.map(this.createList)}
-
+              {/* <ColorItems onClick={this.Click.bind(this)} /> */}
             </div>
     )
   }
