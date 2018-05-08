@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import SearchForm from './features/SearchForm';
-import ColorItems from './features/ColorItems';
-import CounterColor from './features/CounterColor';
+import Filter from './features/Filter';
+import ListofAvailableColorItems from './features/ListofAvailableColorItems';
+import AmountofColorItems from './features/AmountofColorItems';
 import SelectedColors from './features/SelectedColors';
 import { hot } from 'react-hot-loader';
 
@@ -13,6 +13,7 @@ class App extends Component {
       showColor: [],
       selectedColors: [],
       suitableColor: [],
+      message:'',
       searchStr: '',
       doesShowColor: true
     }
@@ -24,52 +25,81 @@ class App extends Component {
     });
   }
 
-  createList(item, id){
-    return (
-      <div key={item.id} >
-       <ColorItems color={item.color} />
-      </div>
-    )
-  }
+  // createList(item, id){
+  //   return (
+  //     <div key={item.id} >
+  //       <ListofAvailableColorItems color={item.color} id={item.id}/>
+  //     </div>
+  //   )
+  // }
 
-  HandlerClick() {
+  handlerClick() {
     this.setState({selectedColors: 'red'})
     // let id = target.event.id;
     // this.setState({ selectedColors: id})
+  }
+
+  filterSearch() {
+    let searchStr = this.state.searchStr;
+    let colors = [];
+
+    let showColors = this.state.suitableColor.filter(el => {
+      if (el.tags.toString().match(searchStr)) {
+        colors.push(el);
+      }
+    })
+    this.setState({ showColor: colors })
+  }
+
+  addColor(color) {
+    console.log(this.state.selectedColors)
+    if(this.state.selectedColors.length < 11) {
+
+      // let suitable = this.state.suitableColor;
+      // let index = suitable.indexOf(color);
+      // suitable.slice(index, 1);
+      // this.setState({
+      //   selectedColors: color,
+      // suitableColor: suitable})
+    }
+    console.log(color);
+
   }
 
   componentDidMount() {
     fetch('https://epam-fe-homework-15.firebaseio.com/colors.json')
     .then(response => response.json())
       .then(data => this.setState({ showColor: data, suitableColor: data }))
+        .catch(err => console.error(err))
   }
 
-  filterSearch(){
-    let searchStr = this.state.searchStr;
-    let colors = [];
 
-    let showColors = this.state.suitableColor.filter(el => {
-      if(el.tags.toString().match(searchStr)){
-        colors.push(el);
-            }
-    })
-    this.setState({ showColor: colors})
-  }
+
 
   render() {
     let color = this.state.showColor;
-    return (
+    let message = '';
+    if (this.state.showColor.length === 0) {
+      message = 'There no color found'
+    }
+      return (
             <div className="">
             <div className="header">
-              <SearchForm
+              <Filter
                 onChange={this.handleChange.bind(this)}/>
-                <SelectedColors doesShowColor={this.state.doesShowColor} color={this.state.selectedColors}/>
-              <CounterColor length={this.state.showColor.length} />
+                <SelectedColors doesShowColor={this.state.doesShowColor}
+                 list={this.state.selectedColors}/>
+          <AmountofColorItems length={this.state.showColor.length}/>
         </div>
               <div className="color-box">
-              {color.map(this.createList)}
-              </div>
-              {/* <ColorItems onClick={this.Click.bind(this)} /> */}
+              {message}
+              {color.map((item, index) => {
+                return <div key={index}>
+                <ListofAvailableColorItems color={item.color} id={item.id}
+                 onClick={this.addColor}/>
+                </div>
+              })}
+            </div>
             </div>
     )
   }
