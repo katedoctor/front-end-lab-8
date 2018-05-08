@@ -99,26 +99,6 @@ class App extends Component {
       message = 'There no color found'
     }
       return (
-<<<<<<< HEAD
-            <div className="">
-            <div className="header">
-              <Filter
-                onChange={this.handleChange.bind(this)}/>
-                <SelectedColors doesShowColor={this.state.doesShowColor}
-                 list={this.state.selectedColors}/>
-          <AmountofColorItems length={this.state.showColor.length}/>
-        </div>
-              <div className="color-box">
-              {message}
-              {color.map((item, index) => {
-                return <div key={index}>
-                <ListofAvailableColorItems color={item.color} id={item.id}
-                 onClick={this.addColor}/>
-                </div>
-              })}
-            </div>
-            </div>
-=======
           <div>
             <div className="header">
               <Filter onChange={this.handleChange.bind(this)}/>
@@ -144,7 +124,6 @@ class App extends Component {
                     })}
              </div>
           </div>
->>>>>>> homework_15
     )
   }
 }
