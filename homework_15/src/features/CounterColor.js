@@ -2,7 +2,7 @@ import React from 'react';
 
 const CounterColor = (props) => {
   return (
-    <div>Color:{props.length}</div>
+    <div className="counter-color">Color: {props.length}</div>
   )
 }
 
