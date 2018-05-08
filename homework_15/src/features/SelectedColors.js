@@ -1,8 +1,7 @@
 import React from 'react';
 
-const SelectedColors=(props)=> {
+const SelectedColors = (props) => {
   const doesShow = props.doesShowColor;
-  console.log(doesShow);
   return(
     <div className="selected-color">
       {doesShow ?
@@ -11,20 +10,12 @@ const SelectedColors=(props)=> {
         <div className="selector-holder"></div>
         <div className="selector-holder"></div>
       </div>:
-      props.list.splice(-5).map((color, index)=> {
-          return <div key={index}
-                className="selected"><i className="material-icons"
-                style={{ background: color.color }}
-                onClick={() => { props.handleClick(color.id) }}>remove_circle</i>
-                </div>
-      })
-      // <div>
-      //   <div className="selector-holder selected"></div>
-      //   <div className="selector-holder selected"></div>
-      //   <div className="selector-holder selected"></div>
-      //   <div className="selector-holder selected"></div>
-      //   <div className="selector-holder selected"></div>
-      // </div>
+         props.list.slice(-5).map((color, index)=> {
+          return <div key={index} className="selected" style={{ background: color }}>
+                    <i className="material-icons"
+                    onClick={() => {props.onClick(color.color)}}>
+              clear</i>
+          </div>})
         }
     </div>
   )
