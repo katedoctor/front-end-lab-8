@@ -121,7 +121,7 @@ class App extends Component {
               return <div key={id}>
                         <ListofAvailableColorItems
                         color={item.color} id={item.id}
-                        showColor={this.state.showColor}
+                        selectedColors={this.state.selectedColors}
                         onClick={this.addColor.bind(this)}/>
                       </div>
                     })}
