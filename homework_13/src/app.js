@@ -4,13 +4,14 @@ blog.controller('appctrl', ['$scope',
     let add = true;
     let arrayofCategories = ['All'];
     let edit = true;
+    let error = false;
     let disabled = true;
     let hidden = false;
 
 
     $scope.addNewPost = (newTitle, newCategories, newDescription, newUrl) => {
       let newCategoriesIns = newCategories.split(/[ ,]+/);
-
+      $scope.add = false;
       if(!newUrl){
         newUrl = './assets/angularjs.jpeg';
       }
@@ -23,9 +24,6 @@ blog.controller('appctrl', ['$scope',
             }
           )
       $scope.categoriesList(newCategoriesIns);
-      // arrayofCategories.push(newCategoriesIns);
-      console.log(newCategoriesIns);
-      console.log(arrayofCategories);
     }
 
     $scope.categoriesList = () => {
@@ -52,7 +50,6 @@ blog.controller('appctrl', ['$scope',
         })
 
       }
-      console.log(category);
     }
 
     $scope.posts = defaultPosts;

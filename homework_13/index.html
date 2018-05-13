@@ -2,61 +2,68 @@
 <head>
   <meta charset="utf-8" />
   <title>Blog</title>
-
-
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body ng-app="blog" ng-controller="appctrl">
   <header>
     <h1>Epam_blog</h1>
   </header>
+
   <main>
     <div class="sidebar">
-      <button ng-click="add=!add; newTitle=''; newDescription=''; newCategories=''; newUrl='';">Add new post</button>
+      <button ng-click="add=!add; newTitle=''; newDescription=''; newCategories=''; newUrl='';"
+      class="add-new-post"><span>Add new post </span></button>
       <br />
-      <input type="text" ng-model="name" placeholder="search by title"/>
+      <input type="text" class="search" ng-model="name" placeholder="search by title"/>
       <br />
-      <input type="text" ng-model="category" placeholder="search by categories" />
       <div>
-        <h3>Categories</h3>
-        <ul ng-repeat="category in categories ">
+        <h3 class="categories-header">Categories</h3>
+        <ul ng-repeat="category in categories " class="categories">
           <li ng-click="searchCategories(category)" >{{category}}</li>
         </ul>
       </div>
     </div>
+
+
         <div ng-show="add">
-          <form name="newPost">
-            <span class="error" ng-show="error"> Please fill in the field </span>
-            <p>Your Title
-              <input type="text" ng-model="newTitle" ng-minlength="5" name="title" required="string" placeholder="title..." />
-            </p>
-            <p>Description
-              <input type="text" ng-model="newDescription" ng-minlength="10" name="description" required="string" placeholder="description..."/>
-            </p>
-            <p>Add Categories
-              <input type="text" ng-model="newCategories" name="categories" placeholder="categories, ..." />
-            </p>
-            <p>Your photo
-              <input ng-model="newUrl" ng-minlength="-1" placeholder="file name"/>
-            </p>
-            <button ng-click="newTitle && newDescription && newCategories ?
-              addNewPost(newTitle, newCategories, newDescription, newUr) : error=true;
-              ">Add</button>
+          <span class="error" ng-show="error"> Please fill in the field </span>
+          <form name="newPost" class="new-post-holder">
+            <div class="name">
+              <p class="title-name">Your Title</p>
+              <p class="description-name">Description</p>
+              <p class="categories-name">Add Categories</p>
+              <p>Your photo</p>
+            </div>
+            <div>
+              <input class="input-title" type="text" ng-model="newTitle" ng-minlength="5" name="title"
+               required="string" placeholder="title..." />
+              <textarea class="input-description" type="text" ng-model="newDescription" ng-minlength="10" name="description"
+              required="string" placeholder="description..."></textarea>
+              <input class="input-categories" type="text" ng-model="newCategories" name="categories" placeholder="categories, ..." />
+              <input class="input-img" ng-model="newUrl" type="url" ng-minlength="-1" placeholder="file name"/>
+              <br />
+               <button class="add-post-btn" ng-click="newTitle && newDescription && newCategories ?
+                  addNewPost(newTitle, newCategories, newDescription, newUrl) : error=true;">Add</button>
+            </div>
+
           </form>
         </div>
 
     <div class="container" ng-repeat="post in defaultPosts | filter: {title: name} "
      ng-mouseover="hidden=true" ng-mouseleave="hidden=false">
-        <img src={{post.src}} alt="code-img">
-        <button ng-click="edit=!edit; disabled=!disabled" ng-show="hidden">{{edit ? "save":"edit"}}</button>
+        <img class="img" src={{post.src}} alt="code-img">
         <br />
-        <input ng-model="post.title" class="title" ng-show="disabled" style="width: 100%" />
-        <h1 ng-show="!disabled">{{post.title}}</h1>
+        <input ng-model="post.title" class="title-edit" ng-show="disabled" style="width: 100%" />
+        <h1 class="title" ng-show="!disabled">{{post.title}}</h1>
 
-        <input ng-model="post.description" class="description" ng-show="disabled" style="width: 100%;"/>
-        <div ng-show="!disabled">{{post.description}}</div>
-        <p class="categories" ng-repeat="category in post.categories">
-        {{category}}</p>
+        <textarea rows="8" cols="50" ng-model="post.description" class="description-edit" ng-show="disabled" style="width: 100%;"></textarea>
+        <div class="description" ng-show="!disabled">{{post.description}}</div>
+
+        <p class="category" ng-repeat="category in post.categories">
+        {{category}}</p><br />
+      <button class="edit" ng-click="edit=!edit; disabled=!disabled" ng-show="hidden">{{edit ? "save":"edit"}}</button>
+
     </div>
 
   </main>
