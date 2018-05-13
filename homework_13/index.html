@@ -1,0 +1,69 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Blog</title>
+
+
+</head>
+
+<body ng-app="blog" ng-controller="appctrl">
+  <header>
+    <h1>Epam_blog</h1>
+  </header>
+  <main>
+    <div class="sidebar">
+      <button ng-click="add=!add; newTitle=''; newDescription=''; newCategories=''; newUrl='';">Add new post</button>
+      <br />
+      <input type="text" ng-model="name" placeholder="search by title"/>
+      <br />
+      <input type="text" ng-model="category" placeholder="search by categories" />
+      <div>
+        <h3>Categories</h3>
+        <ul ng-repeat="category in categories ">
+          <li ng-click="searchCategories(category)" >{{category}}</li>
+        </ul>
+      </div>
+    </div>
+        <div ng-show="add">
+          <form name="newPost">
+            <span class="error" ng-show="error"> Please fill in the field </span>
+            <p>Your Title
+              <input type="text" ng-model="newTitle" ng-minlength="5" name="title" required="string" placeholder="title..." />
+            </p>
+            <p>Description
+              <input type="text" ng-model="newDescription" ng-minlength="10" name="description" required="string" placeholder="description..."/>
+            </p>
+            <p>Add Categories
+              <input type="text" ng-model="newCategories" name="categories" placeholder="categories, ..." />
+            </p>
+            <p>Your photo
+              <input ng-model="newUrl" ng-minlength="-1" placeholder="file name"/>
+            </p>
+            <button ng-click="newTitle && newDescription && newCategories ?
+              addNewPost(newTitle, newCategories, newDescription, newUr) : error=true;
+              ">Add</button>
+          </form>
+        </div>
+
+    <div class="container" ng-repeat="post in defaultPosts | filter: {title: name} "
+     ng-mouseover="hidden=true" ng-mouseleave="hidden=false">
+        <img src={{post.src}} alt="code-img">
+        <button ng-click="edit=!edit; disabled=!disabled" ng-show="hidden">{{edit ? "save":"edit"}}</button>
+        <br />
+        <input ng-model="post.title" class="title" ng-show="disabled" style="width: 100%" />
+        <h1 ng-show="!disabled">{{post.title}}</h1>
+
+        <input ng-model="post.description" class="description" ng-show="disabled" style="width: 100%;"/>
+        <div ng-show="!disabled">{{post.description}}</div>
+        <p class="categories" ng-repeat="category in post.categories">
+        {{category}}</p>
+    </div>
+
+  </main>
+
+  <script type="text/javascript" src="lib/angular.min.js"></script>
+  <script src="src/data.js"></script>
+  <script src="src/app.js"></script>
+</body>
+
+</html>
