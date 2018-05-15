@@ -1,0 +1,22 @@
+th {
+  border: 1px solid black;
+}
+td {
+  border: 1px solid black;
+}
+input {
+  padding: 4px;
+  border:none;
+  color: grey;
+  background: rgb(181, 234, 243);
+}
+input:disabled {
+  border:none;
+  background:  rgb(181, 234, 243);
+  color:black;
+}
+.material-icons {
+  font-size: 15px;
+  padding: 2px;
+
+}
