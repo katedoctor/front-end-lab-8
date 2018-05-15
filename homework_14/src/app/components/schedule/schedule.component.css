@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+
+}
+th {
+  border: 1px solid black;
+}
+caption {
+  text-align: center;
+}
+.add-class{
+  margin-left:20px;
+}
