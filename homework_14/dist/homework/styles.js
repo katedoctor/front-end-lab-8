@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\nbody {\n    background: rgb(181, 234, 243);\n    font-family: 'Times New Roman', Times, serif;\n\n}"
 
 /***/ }),
 
@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\study\js\homework_14\homework\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! D:\study\js\homework_14\homework_14\src\styles.css */"./src/styles.css");
 
 
 /***/ })

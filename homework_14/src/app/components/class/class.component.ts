@@ -1,5 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {ServiceService, IClass} from '../../service.service'
+import { Component, OnInit, Input } from '@angular/core';
+import {ServiceService, IClass} from '../../service.service';
+
+
+interface IObj {
+  topic: string,
+  date: string,
+  lecturer: string,
+  edit: boolean
+}
 
 @Component({
   selector: 'app-class',
@@ -11,33 +19,48 @@ export class ClassComponent implements OnInit {
   public value;
 
 
+
   constructor(service: ServiceService) {
     this.lessons = service.lessons;
    }
 
   ngOnInit() {
+
   }
 
-  editClass(lesson) {
+  editClass(lesson):void {
     lesson.edit = !lesson.edit;
-    this.value = lesson;
+    this.value = JSON.parse(localStorage.getItem("lessons"));
    }
 
-   saveClass(lesson) {
-     let serLessons = JSON.stringify(this.lessons)
-      localStorage.setItem('lessons', serLessons);
-     lesson.edit = !lesson.edit;
+   saveClass(topic,date,lecturer, edit, i) {
+     let obj = {
+       topic: topic,
+       date:date,
+       lecturer: lecturer,
+       edit: edit
+     }
+     this.lessons.splice(i, 1);
+     this.lessons.push(obj);
+     edit=!edit;
+
+       let serLessons = JSON.stringify(this.lessons)
+       localStorage.setItem('lessons', serLessons);
+
    }
 
-  removeClass(i) {
-    this.lessons.splice(i, 1)
+  removeClass(i):void {
+    this.lessons.splice(i, 1);
+    let serLessons = JSON.stringify(this.lessons)
+    localStorage.setItem('lessons', serLessons);
   }
 
-  discardChanges(lesson, i) {
+  discardChanges(lesson, i){
     lesson.edit = !lesson.edit;
-    lesson = JSON.parse(localStorage.getItem('lessons'));
-    return lesson;
+    this.lessons = this.value;
+
   }
 
 }
+
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { log } from 'util';
 import {ServiceService, IClass} from 'src/app/service.service'
 
@@ -9,6 +9,7 @@ import {ServiceService, IClass} from 'src/app/service.service'
 })
 export class ScheduleComponent implements OnInit {
   public lessons: Array<IClass>;
+
 
   constructor(service: ServiceService) {
     this.lessons = service.lessons;
@@ -22,12 +23,9 @@ export class ScheduleComponent implements OnInit {
       edit: false
     }
     this.lessons.push(obj);
-    console.log('click');
-  }
+   }
 
   ngOnInit() {
-    console.log('have');
-
   }
 
 }

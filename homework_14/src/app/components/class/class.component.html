@@ -1,26 +1,26 @@
 <tr>
-  <th style="width: 10px">#
+  <th style="width: 20px">#
   </th>
   <th>Topic</th>
   <th>Date</th>
   <th>Lecturer</th>
   <th>Acction</th>
 </tr>
-<tr *ngFor="let lesson of lessons; let i=index">
-      <td>{{i+1}}</td >
+<tr  *ngFor="let lesson of lessons; let i=index">
+      <td >{{i+1}}</td >
       <td >
-        <input [value]="lesson.topic" [disabled]="lesson.edit" name="lesson.topic">
+        <input [value]="lesson.topic" [disabled]="lesson.edit" name="lesson.topic" #topic >
       </td >
       <td>
-          <input [value]="lesson.date" [disabled]="lesson.edit" name="lesson.date">
+          <input [value]="lesson.date" [disabled]="lesson.edit" name="lesson.date" #date>
        </td>
         <td>
-          <input [value]="lesson.lecturer" [disabled]="lesson.edit" name="lesson.lecturer">
+          <input [value]="lesson.lecturer" [disabled]="lesson.edit" name="lesson.lecturer" #lecturer >
         </td>
 
-        <td>
+        <td style="width: 80px">
           <div style="display: inline-block;">
-            <button class="material-icons" (click)="lesson.edit? editClass(lesson) : saveClass(lesson)">{{ lesson.edit ? "mode_edit" : "done" }}</button>
+            <button class="material-icons" (click)="lesson.edit ? editClass(lesson) : saveClass(topic.value, date.value, lecturer.value, edit=true, i)">{{ lesson.edit ? "mode_edit" : "done" }}</button>
             <button class="material-icons" (click)=" lesson.edit ? removeClass(i) : discardChanges(lesson, i)">{{ lesson.edit ? "delete_forever" : "clear" }}</button>
           </div>
         </td>
